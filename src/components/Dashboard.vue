@@ -3,8 +3,9 @@
   <div class="myadmin-dashboard">
     <el-row>
       <el-col :span="4">
+        <!-- active-text-color  	当前激活菜单的文字颜色 -->
         <el-menu
-          default-active="dashboard"
+          :default-active="defaultActive"
           background-color="#1F2D3D"
           text-color="#fff"
           active-text-color="#2486CD"
@@ -21,12 +22,14 @@
               <i class="el-icon-document"></i>
               <span>数据管理</span>
             </template>
-            <el-menu-item index="userlist">用户管理</el-menu-item>
-            <el-menu-item index="shoplist">商家管理</el-menu-item>
+            <el-menu-item index="userlist">用户列表</el-menu-item>
+            <el-menu-item index="shoplist">商家列表</el-menu-item>
             <el-menu-item index="foodlist">食品列表</el-menu-item>
             <el-menu-item index="orderlist">订单列表</el-menu-item>
             <el-menu-item index="adminlist">管理员列表</el-menu-item>
           </el-submenu>
+          <!-- 数据管理结束 -->
+          <!-- 添加数据开始 -->
           <el-submenu index="addData">
             <template slot="title">
               <i class="el-icon-plus"></i>
@@ -54,7 +57,9 @@ export default {
   components: {},
   data() {
     //这里存放数据
-    return {};
+    return {
+      defaultActive:'dashboard'
+    };
   },
   //监听属性 类似于data概念
   computed: {},
@@ -65,7 +70,9 @@ export default {
   //生命周期 - 创建完成（可以访问当前this实例）
   created() {},
   //生命周期 - 挂载完成（可以访问DOM元素）
-  mounted() {},
+  mounted() {
+    // this.defaultActive=location.hash.slice(2) || 'dashboard';
+  },
   beforeCreate() {}, //生命周期 - 创建之前
   beforeMount() {}, //生命周期 - 挂载之前
   beforeUpdate() {}, //生命周期 - 更新之前
